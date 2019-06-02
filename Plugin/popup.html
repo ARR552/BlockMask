@@ -1,0 +1,56 @@
+<!doctype html>
+<html style="width:357px; height:580px;">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="./web3/web3.js"></script>
+	<script type="text/javascript" src="./web3/ethereumjs-tx.js"></script>
+
+	<title>BlockMask</title>
+</head>
+
+<body text="white" style="width:357px; height:580px;" id="all">
+	<div id="app-content"></div>
+
+	<form>
+		<select id="mySelect" size="1">
+			<option>Localhost</option>
+			<option>Ropsten</option>
+			<option>MainNet</option>
+		</select>
+	</form>
+	<script src="./block.js" type="text/javascript" charset="utf-8"></script>
+	<button onclick="setNetwork()" class="boton_personalizado">Set Network</button>
+	<hr size="1px">
+	<p class="login">
+		<b>Register:</b><br>
+		<input type="password" id="pk" required minlength="64" maxlength="64" placeholder="Enter your private key"> <br>
+		<input class="boton_personalizado" type="button" value="Login" onclick="Login()" style="display: block;"
+			id="loginButton" />
+	</p>
+	<br>
+	<input class="boton_personalizado" type="button" value="AutoComplete" onclick="CompleteFields()"
+		style="display: block;" id="completeFields" />
+	<br>
+	<input type="text" id="url_id" placeholder="https://"><br>
+	<br>
+	<input type="text" id="msg" placeholder="Write the message"><br><br>
+	<input type="text" id="address" placeholder="User address 0xa58f92b..."><br>
+
+	<div id="spin" class="loader" style="display: none;"></div>
+	<br>
+	<div style="width: 200px; margin: auto;">
+		<input class="boton_grande" style="float:left;" type="button" value="Submit&#13;&#10;message"
+			onclick="SubmitToBlockchain()" style="display: block;" id="submitButton" />
+		<input class="boton_grande" style="float:right;" type="button" value="Check&#13;&#10;integrity"
+			onclick="CheckIntegrity()" style="display: block;" id="checkButton" />
+	</div>
+	<h3 id="comment"></h3>
+	<b id="error" style="color: red;"></b>
+</body>
+
+</html>
