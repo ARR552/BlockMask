@@ -50,10 +50,11 @@ contract BlockMask {
     }
     
     function setContent (string memory _url, string memory _msg) public {
+       bytes32 url = keccak256(abi.encodePacked(_url));
+       
+       require(storedData[url].registrar == address(0));
         
        userContent[msg.sender].messages.push(_url) - 1;
-       
-       bytes32 url = keccak256(abi.encodePacked(_url));
        
        storedData[url].hashmsg = keccak256(abi.encodePacked(_msg));
        storedData[url].registrar = msg.sender;
