@@ -391,7 +391,7 @@
 					var URL = "http://localhost:7545";
 					web3 = new Web3(new Web3.providers.HttpProvider(URL));
 					Web3.providers.HttpProvider.prototype.sendAsync = Web3.providers.HttpProvider.prototype.send
-					contractAddress = "0xd002c4f91e4ad8650455ea5949c6cc1dd2ca0140";
+					contractAddress = "0x9ab56344fd3033d8339eb0b9a6723442adfab3a7";
 					break;
 		}
 		

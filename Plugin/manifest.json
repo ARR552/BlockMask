@@ -13,6 +13,15 @@
             "id": "webextension@block.io"
         }
     },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    
+    "content_scripts": [{
+        "matches":    ["*://twitter.com/*"],
+        "js":         ["content.js"],
+        "all_frames": true
+    }],
     "browser_action": {
         "default_icon": {
             "19": "images/icon-19.png",
@@ -25,6 +34,7 @@
         "*://*/*",
         "tabs",
         "webRequest",
+        "webNavigation",
         "storage",
         "activeTab"
     ]
