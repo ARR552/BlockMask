@@ -1,4 +1,5 @@
+var message;
 browser.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
-    console.log("Received msg: ", msg, sender.tab, sender.frameId);
+    message = msg;
     sendResponse("Gotcha!");
 });

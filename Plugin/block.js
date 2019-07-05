@@ -296,6 +296,10 @@
 	
 	function CompleteFields(){
 		var pathArray;
+		browser.runtime.getBackgroundPage().then((get)=>{
+			console.log(get.message);
+			document.getElementById("msg").value = get.message;
+		});
 		browser.tabs.query({active: true, currentWindow: true}).then((tabs)=>{
 			pathArray = tabs[0].url.split('/');
 			if(pathArray[2] == "twitter.com"){
@@ -350,7 +354,7 @@
 		  
 	    }
 	}
-
+	
 	function onError(e) {
 	  console.error(e);
 	}
