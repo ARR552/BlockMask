@@ -8,6 +8,7 @@
         "16": "images/icon-16.png",
         "128": "images/icon-128.png"
     },
+    "content_security_policy": "default-src * 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-eval';",
     "applications": {
         "gecko": {
             "id": "webextension@block.io"

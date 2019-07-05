@@ -15,6 +15,12 @@
 	} else {
 		createWeb3();
 	}
+	document.getElementById("setNet").addEventListener("click", setNetwork);
+	document.getElementById("loginButton").addEventListener("click", Login);
+	document.getElementById("completeFields").addEventListener("click", CompleteFields);
+	document.getElementById("submitButton").addEventListener("click", SubmitToBlockchain);
+	document.getElementById("checkButton").addEventListener("click", CheckIntegrity);
+
 	
 	function SubmitToBlockchain (){
 		
@@ -56,8 +62,8 @@
 								var nonce = "0x" + (nonceValue).toString(16);
 								rawtx = {
 										nonce: nonce,
-										gasPrice: this.web3.utils.toHex(estimatedGas),
-										gasLimit: this.web3.utils.toHex(GasLimit),
+										gasPrice: web3.utils.toHex(estimatedGas),
+										gasLimit: web3.utils.toHex(GasLimit),
 										to: contractAddress,
 										data: bytecodeData
 									};
@@ -67,7 +73,7 @@
 								tx.sign(privateKey);
 								var raw = "0x" + tx.serialize().toString("hex");
 								  
-								this.web3.eth.sendSignedTransaction(raw)
+								web3.eth.sendSignedTransaction(raw)
 								.once('transactionHash', function(hash){
 									document.getElementById("comment").innerHTML = "Transaction sent, please wait til' it is mined"
 									//Arranco el spin y el boton
@@ -217,8 +223,8 @@
 										var nonce = "0x" + (nonceValue).toString(16);
 										rawtx = {
 												nonce: nonce,
-												gasPrice: this.web3.utils.toHex(estimatedGas),
-												gasLimit: this.web3.utils.toHex(GasLimit),
+												gasPrice: web3.utils.toHex(estimatedGas),
+												gasLimit: web3.utils.toHex(GasLimit),
 												to: contractAddress,
 												data: bytecodeData
 											};
@@ -227,7 +233,7 @@
 
 										tx.sign(privateKey);
 										var raw = "0x" + tx.serialize().toString("hex");
-										this.web3.eth.sendSignedTransaction(raw)
+										web3.eth.sendSignedTransaction(raw)
 										.once('transactionHash', function(hash){
 											document.getElementById("comment").innerHTML = "Transaction sent, please wait til' it is mined";
 											//Arranco el spin y oculto el boton
@@ -235,7 +241,6 @@
 											document.getElementById("loginButton").style.display = "none";
 										})
 										.on('error', function(error){
-											//console.log(error);
 											document.getElementById("comment").innerHTML = "";
 											document.getElementById("error").innerHTML = "Error in transaction";
 											document.getElementById("spin").style.display = "none"
@@ -370,7 +375,6 @@
 	}
 	
 	function createWeb3(){
-		console.log("func createweb3");
 		switch (selectedNetwork) {
 			case "Ropsten":
 					web3 = new Web3();
