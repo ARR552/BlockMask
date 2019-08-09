@@ -8,11 +8,21 @@
         "16": "images/icon-16.png",
         "128": "images/icon-128.png"
     },
+    "content_security_policy": "default-src * 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-eval'; object-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-eval';",
     "applications": {
         "gecko": {
             "id": "webextension@block.io"
         }
     },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    
+    "content_scripts": [{
+        "matches":    ["*://twitter.com/*"],
+        "js":         ["content.js"],
+        "all_frames": true
+    }],
     "browser_action": {
         "default_icon": {
             "19": "images/icon-19.png",
@@ -25,6 +35,7 @@
         "*://*/*",
         "tabs",
         "webRequest",
+        "webNavigation",
         "storage",
         "activeTab"
     ]
